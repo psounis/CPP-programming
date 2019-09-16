@@ -1,18 +1,28 @@
-/* CPP1.overloading.cpp  Εκτύπωση διαφορετικών τύπων δεδομένων */
+/* CPP1.overloading.cpp  Υπερφόρτωση Συναρτήσεων */
 
 #include <iostream>
 using namespace std;
 
+int sum(int x, int y);
+double sum(double x, double y);
+
 int main()
 {    
-   int x = 5;
-   double y = 5.01;
-   
-   cout<<"To x einai ";    
-   cout<<x;
-   cout<<" kai to y einai ";
-   cout<<y;
-   
-   return 0;
+    cout<<sum(5,3);    
+    cout<<" ";    
+    cout<<sum(1.1,2.2); 
+    return 0;
 }
+
+int sum(int x, int y)
+{    
+    return x+y;
+}
+
+double sum(double x, double y)
+{    
+     return x+y;
+}
+
+
 
