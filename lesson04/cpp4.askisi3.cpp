@@ -1,92 +1,96 @@
 /* cpp4.askisi3.cpp */
 
 #include <iostream>
+#include <cstring>
 using namespace std;
 
-class ARRAY {
-  public:
-    ARRAY(int in_n);
-    ARRAY(const ARRAY &ob);
-    ~ARRAY();
-    void set_i(int i, int val);
-    int get_i(int i);
-    int get_n() const; 
-    void print();
-  private:
-    int *p;
-    int n;
+class STRING {
+    public:
+        STRING();
+        STRING(char *in_str);
+        STRING(const STRING &ob);
+        ~STRING();
+        int get_length() const; 
+        char *get_str() const; 
+        void set_str(char *in_str);
+        void print(); 
+    private:
+       int length;
+       char *str; 
 };
 
 
 int main()
 {
-    int n=10;
-    ARRAY pin(n);
-    ARRAY pin2 = pin; 
+    char s[80]="This is a string";
+    STRING s1(s);
+    STRING s2 = s1; 
     
-    for (int i=0; i<n; i++)
-        pin.set_i(i,i*i);
+    strcpy(s, "This is a new string");
+    s2.set_str(s);
     
-    pin.print();
-
-    cout<<"\n";
-
-    for (int i=0; i<n; i++)
-        pin2.set_i(i,i*i*i);
+    s1.print(); 
+    cout<<endl; 
+    s2.print();
     
-    pin2.print();
-
-    
-    return 0;
+    return 0; 
 }
 
-ARRAY::ARRAY(int in_n)
+STRING::STRING()
 {
-    n = in_n; 
+    length = 0;
+    str = NULL; 
+}
+
+STRING::STRING(char *in_str)
+{
+    length = strlen(in_str);
     
-    p = new int [n];
-    if (!p)
-        cout<<"Error allocating memory!";
-}
-
-ARRAY::ARRAY(const ARRAY &ob)
-{
-    n = ob.get_n(); 
+    str = new char [length];
+    if (!str) cout<<"Error Allocating Memory";
     
-    p = new int [n];
-    if (!p) cout<<"Memory Allocation Error!";
+    strcpy(str, in_str);
 }
 
-ARRAY::~ARRAY()
+STRING::STRING(const STRING &ob)
 {
-    delete [] p;
-}
-
-void ARRAY::set_i(int i, int val)
-{
-    if (i>=0 && i<n)
-        p[i]=val;
-    else
-        cout<<"Error: Out of bounds!";
-}
-
-int ARRAY::get_i(int i)
-{
-    if (i>=0 && i<n)
-        return p[i];
-    else
-        cout<<"Error: Out of bounds!";
-}
-
-int ARRAY::get_n() const
-{
-    return n;
-}
-
-void ARRAY::print()
-{
-    int i;
+    length = ob.get_length(); 
     
-    for (i=0; i<n; i++)
-        cout<<p[i]<<" ";
+    str = new char [length];
+    if (!str) cout<<"Error Allocating Memory";
+    
+    strcpy(str, ob.get_str());    
+}
+
+STRING::~STRING()
+{
+    delete [] str; 
+}
+
+int STRING::get_length() const
+{
+    return length; 
+}
+
+char *STRING::get_str() const
+{
+    return str; 
+}
+
+void STRING::set_str(char *in_str)
+{
+    if (str!=NULL)
+        delete str; 
+    
+    length = strlen(in_str);
+    
+    str = new char [length];
+    if (!str) cout<<"Error Allocating Memory";
+    
+    strcpy(str, in_str);    
+}
+
+void STRING::print()
+{
+    cout<<str; 
 }
