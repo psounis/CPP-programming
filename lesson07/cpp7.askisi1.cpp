@@ -47,6 +47,9 @@ ARRAY::ARRAY(const ARRAY &ob)
     
     p = new int [n];
     if (!p) cout<<"Memory Allocation Error!";
+    
+    for (int i=0; i<n; i++)
+      p[i]=ob[i];
 }
 
 ARRAY::~ARRAY()
