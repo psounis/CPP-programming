@@ -12,7 +12,7 @@ class cow
       if (hunger>10)
         cout<<"MmmmmmmmMMMmmM";
     }
-    int set_hunger (int h)
+    void set_hunger (int h)
     {
       hunger = h; 
     }
