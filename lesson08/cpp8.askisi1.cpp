@@ -33,7 +33,7 @@ int main()
 
 ARRAY::ARRAY(int in_n)
 {
-    if (in_n>1000)
+    if (in_n>MAX_LENGTH)
     {
         cout<<"n is too big!";
         n=0; 
