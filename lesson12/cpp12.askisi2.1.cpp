@@ -60,7 +60,9 @@ waiter::waiter(string in_name, int in_salary):
 }
 
 waiter::waiter()
-{}
+{
+    customers_served=0; 
+}
 
 void waiter::serve(int customers, barista &b)
 {
