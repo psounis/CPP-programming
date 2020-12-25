@@ -119,5 +119,5 @@ ARRAY &ARRAY::operator+= (int right)
     }
     else 
         cout<<"Wrong index!";
-        
+    return *this; 
 }
