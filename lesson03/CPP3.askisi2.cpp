@@ -20,11 +20,18 @@ int main()
 {
     int n=10;
     ARRAY pin(n);
+    ARRAY pin2(10);
     
     for (int i=0; i<n; i++)
         pin.set_i(i,i*i);
     
+    for (int i=0; i<n; i++)
+        pin2.set_i(i,i*i*i);
+
+    pin=pin2;
+
     pin.print();
+    pin2.print();
     
     return 0;
 }
